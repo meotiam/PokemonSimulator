@@ -6,8 +6,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
-
 public class statisticsFinder extends URLConnection{
     public List<String> findStats(String URL) throws IOException {
         Document doc = Jsoup.connect(URL)
@@ -25,12 +23,20 @@ public class statisticsFinder extends URLConnection{
     }
     public List<String> parseStats(List<String> info){
         List<String> embeddedStats= new ArrayList<>();
-        for (int i=0; i<=info.size();i++){
+        for (int i=0; i<info.size();i++){
             String item = info.get(i);
             if (item.contains("cell-num")){
                 embeddedStats.add(item);
             }
         }
         return embeddedStats;
+    }
+    public List<String> findFinalStats(List<String> embeddedStats){
+        List<String> finalStats=new ArrayList<>();
+        for (int i = 0; i<=15;i++){
+            finalStats.add(embeddedStats.get(i));
+            i=i+2;
+        }
+        return finalStats;
     }
 }
