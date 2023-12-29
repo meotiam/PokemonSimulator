@@ -7,6 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 public class statisticsFinder extends URLConnection{
+
+    public List<String> findStatisticsFinal(String URL) throws IOException{
+        List<String> finalList = findStats(URL);
+        finalList = parseStats(finalList);
+        finalList = findFinalStats(finalList);
+        return finalList;
+    }
     public List<String> findStats(String URL) throws IOException {
         Document doc = Jsoup.connect(URL)
                 .data("query","Java")

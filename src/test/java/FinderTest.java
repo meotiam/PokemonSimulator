@@ -20,7 +20,7 @@ public class FinderTest extends statisticsFinder {
     }
     @Test
     public void finalStatsTest() throws IOException {
-        List<String> test  = findStats("https://pokemondb.net/pokedex/raichu");
+        List<String> test  = findStats("https://pokemondb.net/pokedex/entei");
         List <String> testTwo = parseStats(test);
         System.out.print(findFinalStats(testTwo));
     }
